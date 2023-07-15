@@ -1,0 +1,37 @@
+<div class="title">
+    <h1>Crypto Indicators</h1>
+    <button mat-icon-button (click)="goToSettings()">
+        <mat-icon>settings</mat-icon>
+    </button>
+</div>
+
+<div class="coin-list">
+    <div class="coin" *ngFor="let symbol of symbols">
+        <div class="symbol" [ngStyle]="{'background-image': 'url(' + '../../assets/' + symbol.image + ')'}"></div>
+        <div class="description">
+            <p>{{symbol.name}}</p>
+            <p>{{symbol.code}}</p>
+        </div>
+        <div class="indicators">
+            <p *ngIf="symbol.indicators.rsi !== undefined && symbol.indicators.rsi !== null">RSI:
+                {{symbol.indicators.rsi | number:'1.0-0'}}</p>
+            <ng-container *ngIf="symbol.indicators.rsi === undefined && retrieving">
+                <app-loading></app-loading>
+            </ng-container>
+            <p *ngIf="symbol.indicators.rsi === null">RSI: n/a</p>
+        </div>
+    </div>
+</div>
+
+<div class="retrieve-info" *ngIf="retrieving">
+    <app-loading></app-loading>
+    <p>Loading {{maxRequests}} symbol every {{interval}} seconds</p>
+</div>
+
+<div class="actions" *ngIf="!retrieving">
+    <button mat-raised-button color="primary" (click)="getIndicators()">Refresh Data</button>
+    <button mat-raised-button color="primary" *ngIf="autoRefresh === -1" (click)="enableAutoRefresh()">Enable
+        Auto-Refresh</button>
+    <button mat-raised-button color="primary" *ngIf="autoRefresh >= 0" (click)="disableAutoRefresh()">Disable
+        Auto-Refresh</button>
+</div>

@@ -1,0 +1,60 @@
+.coin-list {
+    padding: 0 1rem;
+
+    .coin {
+        display: flex;
+        align-items: center;
+        margin: 1rem 0;
+
+        p {
+            margin: 0;
+        }
+
+        .symbol {
+            height: 3rem;
+            width: 3rem;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            margin-right: 1rem;
+        }
+
+        .description {
+            flex: 1;
+        }
+    }
+}
+
+.retrieve-info {
+    text-align: center;
+    background-color: rgba(0, 0, 0, .1);
+    padding: .5rem;
+    animation: loadingMove 1s infinite;
+
+    p {
+        margin: 0;
+    }
+}
+
+@keyframes loadingMove {
+    0% {
+        background-color: rgba(0, 0, 0, .1);
+    }
+
+    50% {
+        background-color: rgba(0, 0, 0, .3);
+    }
+
+    100% {
+        background-color: rgba(0, 0, 0, .1);
+    }
+}
+
+.actions {
+    padding: .5rem;
+    text-align: center;
+
+    button {
+        margin: 0 .5rem;
+    }
+}

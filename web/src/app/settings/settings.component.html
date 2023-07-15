@@ -1,0 +1,30 @@
+<div class="title">
+    <h1>Settings</h1>
+    <button mat-icon-button (click)="goToDashboard()">
+        <mat-icon>home</mat-icon>
+    </button>
+</div>
+
+<form [formGroup]="settingsForm">
+    <mat-form-field class="example-form-field">
+        <mat-label>Taapi API key</mat-label>
+        <input matInput type="text" formControlName="apiKey">
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+        <mat-label>Taapi maximun number requests</mat-label>
+        <input matInput type="number" formControlName="maxRequests">
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+        <mat-label>Taapi interval (seconds)</mat-label>
+        <input matInput type="number" formControlName="interval">
+    </mat-form-field>
+
+    <mat-form-field class="example-form-field">
+        <mat-label>Auto-refresh interval (minutes)</mat-label>
+        <input matInput type="number" formControlName="autoRefreshInterval">
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" type="submit" (click)="save()" [disabled]="settingsForm.invalid">Guardar</button>
+</form>
